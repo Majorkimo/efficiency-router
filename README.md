@@ -29,12 +29,13 @@ Start a new agent session so it can discover the installed skill. Invoke `$codex
 - Reuse a good route on ordinary follow-ups. Reassess when the task or evidence changes materially.
 - Avoid account usage checks, repeated model trials, and duplicate handoffs merely to make a routing decision.
 - Keep verification, security, release gates, and user permissions at their original strength.
+- Detect context pressure at phase boundaries and, with explicit user authorization and host support, transfer work to a fresh session using a compact handover.
 
 The skills use the models and controls actually available in the host. They do not assume that a model name, price, or control will remain available. If the host cannot change model or effort within the current task, the agent should continue on an adequate current route and report the limitation when it matters.
 
 ## Scope
 
-The package contains only instructions. It includes no telemetry, account integration, automated switching script, provider key, or billing action. It does not replace project instructions or the user's explicit preferences.
+The package contains only instructions, including successor-session triggers and safeguards against repeated transfers. It installs no background context monitor and grants no permission to create sessions. It includes no telemetry, account integration, automated switching script, provider key, or billing action. It does not replace project instructions or the user's explicit preferences.
 
 ## License
 
