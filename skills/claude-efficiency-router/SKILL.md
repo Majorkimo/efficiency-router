@@ -17,6 +17,10 @@ Reduce repeated reads, unchanged retries, and duplicate handoffs, but never weak
 
 This skill is guidance, not spending permission. Do not enable paid continuation, recharge, fast modes, API billing, new keys, or account changes. Stop at a genuine allowance boundary and ask for a decision only when needed. Finish with an observed task delta if available, otherwise a usage band, main driver, and actual waste avoided.
 
+## Execution economy
+
+Before each planned action, silently check necessity, reusable valid evidence, and the smallest sufficient query. Do not add a tool call, reasoning turn, or repeated skill read for this check. Reuse current ownership and mandatory independent review. Avoid receipt-only notification loops; keep required user updates. Before inter-session coordination, release submission, resource-heavy jobs, tool-context changes, or usage comparisons, read [execution-economy.md](references/execution-economy.md); otherwise leave it unloaded.
+
 ## Context pressure and successor sessions
 
 Check at task or phase boundaries using evidence already available, without a monitoring loop. Prepare a compact handover when either trigger occurs:

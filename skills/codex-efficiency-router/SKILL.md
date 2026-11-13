@@ -17,6 +17,10 @@ Among comparably capable routes, prefer lower total usage. Preserve correctness,
 
 Finish the authorized work. A plan, build, or dispatch is not a completed outcome. Report an observed task usage delta only when available; otherwise give an honest usage band and main driver. Do not infer task cost from shared account percentages. This skill authorizes no purchase, billing change, permission change, deployment, or automatic model switch.
 
+## Execution economy
+
+Before each planned action, silently check necessity, reusable valid evidence, and the smallest sufficient query. Do not add a tool call, reasoning turn, or repeated skill read for this check. Reuse current ownership and mandatory independent review. Avoid receipt-only notification loops; keep required user updates. Before inter-session coordination, release submission, resource-heavy jobs, tool-context changes, or usage comparisons, read [execution-economy.md](references/execution-economy.md); otherwise leave it unloaded.
+
 ## Context pressure and successor sessions
 
 Check at task or phase boundaries using evidence already available, without a monitoring loop. Prepare a compact handover when either trigger occurs:
