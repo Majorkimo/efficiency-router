@@ -2,6 +2,8 @@
 
 Two small agent skills for choosing a capable model and a suitable reasoning depth without turning every task into a model comparison. One skill is for Codex, and the other is for Claude Code.
 
+Both entrypoints carry the same mandatory core, with host-specific controls kept in separate adapters and detailed procedures loaded from `references/` only when needed.
+
 The shared rule is simple: choose for the work in front of you, keep the user's choice and the current task intact, and save usage only when the result remains equally sound. A skill is guidance. It does not grant spending, change account settings, or switch models by itself.
 
 ## Install
@@ -29,7 +31,8 @@ Start a new agent session so it can discover the installed skill. Invoke `$codex
 - Reuse a good route on ordinary follow-ups. Reassess when the task or evidence changes materially.
 - Avoid account usage checks, repeated model trials, and duplicate handoffs merely to make a routing decision.
 - Keep verification, security, release gates, and user permissions at their original strength.
-- Detect context pressure at phase boundaries and, with explicit user authorization and host support, transfer work to a fresh session using a compact handover.
+- Transfer at a safe phase boundary only after a current 80% occupancy signal, an equivalent host warning, or repeated context loss, with user authorization and host support.
+- Keep coordination messages actionable, reuse applicable evidence, and use deterministic status checks without duplicate audits.
 
 The skills use the models and controls actually available in the host. They do not assume that a model name, price, or control will remain available. If the host cannot change model or effort within the current task, the agent should continue on an adequate current route and report the limitation when it matters.
 

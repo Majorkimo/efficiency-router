@@ -1,27 +1,49 @@
 # Execution economy
 
-Read only for inter-session coordination, release submissions, resource-heavy jobs, tool-context decisions, or interpreting usage claims.
+Read only for inter-session coordination, gate submissions, heavy runs, tool-context decisions, or interpreting usage claims.
 
 ## Notifications that enable a decision
 
-Message another session only within existing human authorization, when work finishes, a blocker needs action, a decision is needed, or a material risk changes. Suppress receipt-only acknowledgements, unchanged progress, and acknowledgement-of-acknowledgement loops. Required user progress updates and operational alerts still apply. Do not wake dormant sessions solely to distribute efficiency rules; apply them when work resumes. A receipt proves delivery, not completion.
+Send only authorized done, blocked, or question messages. Route a material risk requiring action as blocked or question, without hiding urgency. Preserve required user updates and operational alerts. Never acknowledge receipt, answer pure information, or wake dormant sessions solely to distribute rules. A receipt proves delivery, not completion.
 
-Aim for eight short lines, not a hard cap. Include outcome and checked scope, exact candidate SHA/build identity when applicable, an accessible evidence path, deviations or unchecked gates, and any required decision or next action. Keep detailed test lists in existing evidence files. Include enough context to act without another clarification round; never omit a blocker to meet a length target. A path is useful only if the recipient can access it.
+Use this template, aiming for at most eight short lines:
+
+```text
+Status: DONE | BLOCKED | QUESTION
+Scope: outcome and checked surface
+Candidate: exact SHA or build identity
+Evidence: accessible path
+Checks: GREEN/RED; required checks still unrun
+Deviations: failures, risks, or scope differences
+Action: decision needed or next action and owner
+```
+
+Omit irrelevant fields, not important uncertainty. Keep detailed logs and test lists in evidence files. Eight lines is guidance, not a reason to omit a blocker. The receiver acts only if action is needed, without a receipt-only response.
+
+## Ownership and deterministic status
+
+The master coordinates decisions, blockers, results, owners, and evidence pointers; the assigned product session executes. Assign one owner to each distinct check. Required independent review remains a separate check with its own owner. Large agent fan-outs need Kimo's explicit yes; this rule does not authorize smaller delegations.
+
+Use existing scripts for repetitive status extraction and monitoring. If none exists and recurring status work is necessary, create a minimal deterministic check within scope. It should identify the candidate, state, exit code, and evidence path, report relevant changes, and preserve full logs. Invoke model judgment only for changes that affect a decision or next action. Do not build a new monitoring service, poll unchanged states through model turns, or restart active runs merely to get a status report. Bound waits and preserve required user updates.
 
 ## Submit a complete candidate once
 
-The implementation owner checks the existing gate checklist before submission: candidate identity, required artifacts and evidence, executed checks, known failures, and unrun acceptance steps. Reuse evidence only for the same applicable candidate and unchanged relevant environment; record exceptions honestly. Keep mandated independent review independent. Do not duplicate the same audit without a distinct required purpose.
+Before submission, the implementation owner checks the existing gate checklist: exact candidate, required artifacts, evidence, executed checks, known failures, unrun acceptance steps, and approvals. Record source SHA, any uncommitted candidate digest, checked scope, and relevant environment with evidence. Relevant environment includes configuration, dependencies, runtime, and deployed identity where applicable, without copying secrets.
 
-Bundle compatible small fixes within the authorized release scope when this reduces resubmissions without expanding risk or delaying an urgent fix. A fresh review session, when authorized and useful, still needs the current criteria, candidate, baseline, prior unresolved findings, and relevant security decisions. Do not carry the entire development conversation or discard critical history.
+Reuse evidence while those premises remain valid; rerun affected checks after relevant changes or unresolved failures. A different SHA needs an explicit applicability assessment, not an automatic green status. Never treat a local build as deployment or authenticated live acceptance. Preserve mandated independent review; do not duplicate the same audit without a distinct required purpose.
+
+Bundle compatible small fixes within the authorized scope when this reduces resubmissions without expanding risk or delaying an urgent fix. An authorized fresh review needs current criteria, candidate, baseline, unresolved findings, and relevant security decisions, not the whole development history.
 
 ## Avoid infrastructure retries
 
-Before a resource-heavy job, use the project's existing storage, memory, concurrency, and ownership admission checks. Diagnose resource pressure before retrying. Do not schedule routine reboots, terminate unrelated processes, or change machine settings merely to save tokens.
+Before heavy runs, use existing storage, memory, concurrency, and ownership admission checks. Diagnose resource pressure before retrying. Do not schedule routine reboots, terminate unrelated processes, or change machine settings merely to save tokens.
 
-Prefer existing deterministic scripts for repetitive packaging, status extraction, and evidence checks. Preserve exit codes and full local logs; return a concise summary plus relevant failures. Roughly 100 lines is an initial retrieval target, not a ceiling on a required diff or security review.
+Prefer deterministic scripts for packaging and evidence checks. Keep full local logs and exit codes; return concise summaries and relevant failures. About 100 lines is an initial retrieval target, not a ceiling on necessary review. Filter at the source and expand relevant ranges when needed.
 
 ## Tool context and accounting
 
-Prefer the host's supported deferred tool discovery. Check actual loaded definitions before attributing overhead to configured connectors. Do not disable shared plugins, permissions, or needed tools; any session-scoped reduction must preserve the work and be authorized.
+Discover tools and connectors on demand through supported host controls. Check actual loaded definitions before attributing overhead to configured connectors. Any session-scoped reduction must be authorized and preserve required capabilities; do not disable shared plugins or alter permissions.
 
-Context occupancy is not billed usage. Separate available uncached input, cache reads, cache writes, output, and reasoning telemetry; do not double-count aggregate fields or infer subscription usage from API prices. Include retries, handoffs, and cache changes in any comparison. Use existing telemetry only, without monitoring loops or account queries. Never claim a cost multiplier or percentage saving from context size alone.
+Usage bands describe estimated work: low for narrow tasks, medium for bounded discovery and verification, high for broad context or difficult diagnosis, and extreme for several such drivers across systems. They are not token counts.
+
+Context occupancy is not billed usage. Separate available uncached input, cache reads, cache writes, output, and reasoning telemetry; do not double-count aggregate fields or infer subscription usage from API prices. Include retries, handovers, and cache changes in comparisons. Use existing telemetry; no routine account queries or measurement loops. Shared account deltas are not task tokens, and resets invalidate subtraction. Never infer a saving percentage from context size or model size. Report actual avoided work without inventing a numerical saving.
